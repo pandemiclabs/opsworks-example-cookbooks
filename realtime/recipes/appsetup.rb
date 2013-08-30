@@ -16,7 +16,7 @@ node[:deploy].each do |app_name, deploy|
       :user =>     (deploy[:database][:username] rescue nil),
       :password => (deploy[:database][:password] rescue nil),
       :db =>       (deploy[:database][:database] rescue nil),
-      :port =>     (deploy[:database][:port] rescue nil)
+      :port =>     (deploy[:database][:port] rescue nil),
       :table =>    (node[:realtime][:dbtable] rescue nil)
     )
 
