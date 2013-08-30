@@ -2,9 +2,16 @@ var mysql = {
     'db': '<%= @db%>',
     'user': '<%= @user%>',
     'password': '<%= @password%>',
-    'host': '<%= @host%>',
+    'host': '<%= @host%>'
+};
+
+var mongo = {
+    'host': '<%= @mongohost%>',
+    'database': '<%= @database%>',
+    'port': '<%= @mongoport%>'
 };
 
 module.exports = {
-    'mysql': mysql
+    'mysql': mysql,
+    'mongo': mongo
 };

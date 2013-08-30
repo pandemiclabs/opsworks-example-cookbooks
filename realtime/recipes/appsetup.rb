@@ -16,7 +16,10 @@ node[:deploy].each do |app_name, deploy|
       :user =>     (deploy[:database][:username] rescue nil),
       :password => (deploy[:database][:password] rescue nil),
       :db =>       (deploy[:database][:database] rescue nil),
-      :port =>     (deploy[:database][:port] rescue nil)
+      :port =>     (deploy[:database][:port] rescue nil),
+      :mongohost =>(deploy[:mongo][:host] rescue nil),
+      :database => (deploy[:mongo][:database] rescue nil),
+      :mongoport =>(deploy[:mongo][:port] rescue nil)
     )
 
    only_if do
