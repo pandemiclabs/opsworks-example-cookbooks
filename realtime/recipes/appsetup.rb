@@ -17,7 +17,6 @@ node[:deploy].each do |app_name, deploy|
       :password => (deploy[:database][:password] rescue nil),
       :db =>       (deploy[:database][:database] rescue nil),
       :port =>     (deploy[:database][:port] rescue nil),
-      :table =>    (node[:realtime][:dbtable] rescue nil)
     )
 
    only_if do
