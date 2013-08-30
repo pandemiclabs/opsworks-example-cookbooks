@@ -1,6 +1,6 @@
 node[:deploy].each do |app_name, deploy|
 
-  template "#{deploy[:deploy_to]}/current/modules/conf.js" do
+  template "#{deploy[:deploy_to]}/current/config/db.js" do
     source "conf.js.erb"
     mode 0660
     group deploy[:group]
