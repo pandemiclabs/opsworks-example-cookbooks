@@ -1,1 +1,1 @@
-default[:realtime][:dbtable] = 'aids'
+default[:realtime][:dbtable] = 'feed_realtime'
