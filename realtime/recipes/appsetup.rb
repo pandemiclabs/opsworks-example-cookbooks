@@ -27,4 +27,20 @@ node[:deploy].each do |app_name, deploy|
      File.directory?("#{deploy[:deploy_to]}/current")
    end
   end
+  
+  template "#{deploy[:deploy_to]}/current/.s3cfg" do
+    source "s3cmd.config.erb"
+    mode 0660
+    group deploy[:group]
+    owner "root"
+
+    variables(
+      :access_key => (deploy[:mongo][:access_key] rescue nil),
+      :secret_key => (deploy[:mongo][:secret_key] rescue nil)
+    )
+
+   only_if do
+     File.directory?("#{deploy[:deploy_to]}/current")
+   end
+  end
 end
