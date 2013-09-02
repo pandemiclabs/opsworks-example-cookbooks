@@ -1,4 +1,10 @@
-node[:deploy].each do |app_name, deploy|
+script "aids" do
+    interpreter "bash"
+    user "root"
+    cwd "/tmp"
+    code <<-EOH
+        mongodump --db realtime --out realtime
+        s3cmd:wnode[:deploy].each do |app_name, deploy|
 
   template "#{deploy[:deploy_to]}/current/config/db.js" do
     source "db.js.erb"
@@ -19,8 +25,7 @@ node[:deploy].each do |app_name, deploy|
       :port =>     (deploy[:database][:port] rescue nil),
       :mongohost =>(deploy[:mongo][:host] rescue nil),
       :database => (deploy[:mongo][:database] rescue nil),
-      :mongoport =>(deploy[:mongo][:port] rescue nil),
-      :bucketnast => (deploy[:database][:bucketnast] rescue nil)
+      :mongoport =>(deploy[:mongo][:port] rescue nil)
     )
 
    only_if do

@@ -11,7 +11,10 @@ var mongo = {
     'port': '<%= @mongoport%>'
 };
 
+var bucketnast = '<%= @bucketnast%>';
+
 module.exports = {
     'mysql': mysql,
-    'mongo': mongo
+    'mongo': mongo,
+    'bucketnast': bucketnast
 };
