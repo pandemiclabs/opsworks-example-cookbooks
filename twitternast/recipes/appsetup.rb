@@ -7,10 +7,10 @@ node[:deploy].each do |app_name, deploy|
     owner "root"
 
     variables(
-      :consumer_key =>(deploy[:twitter][:consumerkey] rescue nil),
-      :consumer_secret => (deploy[:twitter][:consumersecret] rescue nil),
-      :access_token_key =>(deploy[:twitter][:tokenkey] rescue nil),
-      :access_token_secret => (deploy[:twitter][:tokensecret] rescue nil)
+      :consumer_key =>(deploy[:twitter][:consumer_key] rescue nil),
+      :consumer_secret => (deploy[:twitter][:consumer_secret] rescue nil),
+      :access_token_key =>(deploy[:twitter][:access_token_key] rescue nil),
+      :access_token_secret => (deploy[:twitter][:access_token_secret] rescue nil)
     )
     
     only_if do
@@ -25,9 +25,9 @@ node[:deploy].each do |app_name, deploy|
     owner "root"
 
     variables(
-      :mongohost =>(deploy[:mongo][:host] rescue nil),
+      :host =>(deploy[:mongo][:host] rescue nil),
       :database => (deploy[:mongo][:database] rescue nil),
-      :mongoport =>(deploy[:mongo][:port] rescue nil)
+      :port =>(deploy[:mongo][:port] rescue nil)
     )
 
     only_if do

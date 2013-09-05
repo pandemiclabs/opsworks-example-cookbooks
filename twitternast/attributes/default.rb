@@ -1,1 +1,1 @@
-default[:realtime][:dbtable] = 'feed_realtime'
+default[:twitternast][:dbtable] = 'feed_realtime'
