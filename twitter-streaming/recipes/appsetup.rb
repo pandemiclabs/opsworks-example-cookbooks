@@ -52,7 +52,6 @@ node[:deploy].each do |app_name, deploy|
       :mongohost =>(deploy[:mongo][:host] rescue nil),
       :database => (deploy[:mongo][:database] rescue nil),
       :mongoport =>(deploy[:mongo][:port] rescue nil),
-      :bucketnast => (deploy[:database][:bucketnast] rescue nil)
     )
 
     only_if do
