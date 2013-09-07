@@ -4,6 +4,7 @@ node[:deploy].each do |app_name, deploy|
     source "db.js.erb"
     mode 0660
     group deploy[:group]
+    owner "root"
 
     if platform?("ubuntu")
       owner "www-data"
@@ -23,9 +24,9 @@ node[:deploy].each do |app_name, deploy|
       :bucketnast => (deploy[:database][:bucketnast] rescue nil)
     )
 
-   only_if do
-     File.directory?("#{deploy[:deploy_to]}/current")
-   end
+    only_if do
+      File.directory?("#{deploy[:deploy_to]}/current")
+    end
   end
   
   template "#{deploy[:deploy_to]}/current/.s3cfg" do
@@ -39,8 +40,8 @@ node[:deploy].each do |app_name, deploy|
       :secret_key => (deploy[:mongo][:secret_key] rescue nil)
     )
 
-   only_if do
-     File.directory?("#{deploy[:deploy_to]}/current")
-   end
+    only_if do
+      File.directory?("#{deploy[:deploy_to]}/current")
+    end
   end
 end
